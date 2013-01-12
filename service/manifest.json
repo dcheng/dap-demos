@@ -1,0 +1,24 @@
+{
+  "name": "TakeOffConf Intents Service",
+  "description": "Picks tons of Media",
+  "version": "1",
+  "manifest_version": 2,
+  "app": {
+    "urls": [
+      "*://62.105.171.205/dap/intents-service.html"
+    ],
+    "launch": {
+      "web_url": "http://62.105.171.205/dap/intents-service.html"
+    }
+  },
+  "icons": {
+    "64": "di.ico"
+  }, 
+   "intents": {
+    "http://webintents.org/pick" : [{
+      "type" : ["image/png", "image/jpg", "image/jpeg", "image/bmp"],
+      "href" : "http://62.105.171.205/dap/intents-service.html",
+      "disposition" : "window",
+      "title" : "Pick files from Flickr et al..."
+    }] }
+}

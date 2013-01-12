@@ -1,0 +1,51 @@
+body {
+      padding-top: 5%; /* 60px to make the container go all the way to the bottom of the topbar */
+      overflow-x:hidden;
+}
+
+.browsers {
+	float: right;
+}
+
+.icon {
+	width: 15px; 
+	height: 15px;
+}
+
+.icon_large {
+  width: 2em; 
+  height: 2em;
+}
+
+.flickr {
+	width: 150px;
+	height: 150px;
+}
+
+.notices p {
+    line-height:20px !important;
+}
+
+.overlay {
+   position: absolute; 
+   top: 75%; 
+   left: 24%;
+   float: left;
+   color: white; 
+   font: bold 1em Helvetica, Sans-Serif; 
+   letter-spacing: -1px;  
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+  }
+
+.esc {
+   position: absolute; 
+   top: 55%; 
+   left: 5%;
+   width: 50%;
+}
+
+#charging {
+	font-weight: bold;
+}
+
