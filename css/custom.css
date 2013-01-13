@@ -26,6 +26,11 @@ body {
     line-height:20px !important;
 }
 
+.libs {
+  position: absolute; 
+  left: 50px;
+}
+
 .overlay {
    position: absolute; 
    top: 75%; 

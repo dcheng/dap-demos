@@ -14,3 +14,14 @@ function get_random_color() {
 function changeTextColor(e){
 	e.css('color',get_random_color());
 }
+
+function xmlDecode(value) {
+   return value.replace(/&quot;/g, '"')
+           .replace(/&gt;/g, '>')
+           .replace(/&lt;/g, '<')
+           .replace(/&amp;/g, '&');
+}
+
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
