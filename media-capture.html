@@ -60,14 +60,14 @@
   picker.addEventListener("change", displayFiles, false);
 
   function displayFiles() {
-    frs = new Array (picker.files.length);
-
+    
     for (var i=0; i<picker.files.length; i++) {
       var fr= new FileReader();
-  
+
       fr.onload = function (event) { 
          var img = document.createElement('img');
          img.setAttribute('class','img-polaroid');
+         img.file = event.target.result;
          img.setAttribute('width', '150');
          img.setAttribute('height', '100');
          document.getElementById('grid').appendChild(img);

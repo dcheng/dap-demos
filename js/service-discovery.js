@@ -79,8 +79,6 @@ $(document).ready(function() {
 
 	function doBrowse(index, id){
 
-		var xhr = new XMLHttpRequest();
-
 		var type = found_services[index].type.replace('upnp:', '');
 		var url = "" + found_services[index].url;
 		var action="Browse";
@@ -89,27 +87,20 @@ $(document).ready(function() {
 			browse_action_types.ObjectID = id;			
 		}
 
-		xhr.onreadystatechange = function() {
-			if (xhr.readyState == 4) {
-				if (xhr.status == 200) {
-					console.log(xmlDecode(xhr.responseText));
-					showBrowse(xmlDecode(xhr.responseText), index);					
-				} else {
-					console.log('error');
-					console.error('XHR Status: ' + xhr.status + ': ' + xhr.statusText);
-				}
-			}
-		};
-		
-
-		xhr.open('POST', url, true);
-		xhr.setRequestHeader('Content-Type', 'text/xml; charset="utf-8"');
-		xhr.setRequestHeader('SOAPAction', '"' + type + '#' + action + '"');
-		if ((id) && (id.length!==0)) {
-			console.log(createSoapMessage(type, action, browse_action_types));
-		}
-		xhr.send(createSoapMessage(type, action, browse_action_types));
-
+		$.ajax({
+		    type     : "POST",
+		    url      : url,
+		    data     : createSoapMessage(type, action, browse_action_types),
+		    dataType : "text/xml",
+		    parameters: "SOAPAction:" + type + "#" + action ,
+		    success  : function(data){
+		       showBrowse(xmlDecode(data), index);		
+		    },
+		    error    : function(e) {
+		       console.log('error');
+			   console.error('remote call error: ' + e);
+		    }
+		});		
 	}
 
 	function showServices(services) {
@@ -135,7 +126,6 @@ $(document).ready(function() {
   }
 
 
-
 	if(navigator.getNetworkServices) {
 	  	$support.html("This Browser supports the Network Service Discovery API :-)") ;
 	  	$('#status').text("Searching ...");
@@ -146,6 +136,5 @@ $(document).ready(function() {
     else {
      	$support.html("Network Service Discovery NOT supported. Buggers! >:( ");
     }
-
 
  }); 
